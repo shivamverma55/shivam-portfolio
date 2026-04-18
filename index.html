@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivam — Content Creator Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0b0b0b;
+    --white: #f4efe6;
+    --cream: #ede7d9;
+    --red: #e63329;
+    --gold: #d4a43a;
+    --gray: #1a1a1a;
+    --gray2: #2a2a2a;
+    --gray3: #3a3a3a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--red);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 70px 60px;
+    position: relative;
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0 100%);
+    z-index: 2;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 38px,
+      rgba(0,0,0,0.05) 38px, rgba(0,0,0,0.05) 39px
+    );
+  }
+
+  .available-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--black);
+    color: var(--white);
+    padding: 9px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .available-tag .dot {
+    width: 7px; height: 7px;
+    background: #2ecc71;
+    border-radius: 50%;
+    animation: blink 1.8s infinite;
+  }
+
+  @keyframes blink {
+    0%,100%{opacity:1;} 50%{opacity:0.3;}
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 11vw, 150px);
+    line-height: 0.85;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+    letter-spacing: 2px;
+  }
+
+  .hero-name .outline {
+    -webkit-text-stroke: 2px var(--white);
+    color: transparent;
+  }
+
+  .hero-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.75);
+    text-transform: uppercase;
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-right {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 70px 50px 70px 70px;
+    position: relative;
+  }
+
+  .hero-right::after {
+    content: 'SH';
+    position: absolute;
+    bottom: -20px; right: -10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 260px;
+    color: rgba(255,255,255,0.025);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .intro-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .intro-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(244,239,230,0.8);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .intro-text strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pill {
+    padding: 9px 18px;
+    border: 1px solid var(--gray3);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.7);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .pill::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 3px; height: 100%;
+    background: var(--red);
+  }
+
+  .pill:hover {
+    border-color: var(--red);
+    color: var(--white);
+    background: rgba(230,51,41,0.08);
+  }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--red);
+    padding: 16px 0;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-flex;
+    gap: 0;
+    animation: scroll 22s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.55);
+    padding: 0 40px;
+  }
+
+  .ticker-item span { color: rgba(0,0,0,0.25); margin-left: 40px; }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 90px 80px; }
+
+  .section-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    width: 60px; height: 1px;
+    background: var(--gray3);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 86px);
+    line-height: 0.92;
+    margin-bottom: 56px;
+  }
+
+  /* ── WORK ── */
+  .work-section { background: var(--gray); }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .work-card {
+    background: var(--black);
+    padding: 36px 30px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background 0.3s;
+  }
+
+  .work-card:hover { background: #111; }
+  .work-card:hover .arrow { transform: translate(5px,-5px); color: var(--red); }
+
+  .card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 90px;
+    color: rgba(255,255,255,0.035);
+    position: absolute;
+    top: 0; right: 14px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .cbadge {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: var(--gray2);
+    color: var(--gold);
+    border: 1px solid var(--gray3);
+  }
+
+  .cbadge.red { background: var(--red); color: #fff; border-color: var(--red); }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: rgba(244,239,230,0.5);
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+
+  .card-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--red);
+    word-break: break-all;
+    display: block;
+    margin-bottom: 18px;
+    opacity: 0.85;
+  }
+
+  .arrow {
+    font-size: 20px;
+    display: inline-block;
+    transition: transform 0.3s, color 0.3s;
+  }
+
+  /* wide card */
+  .work-card.wide {
+    grid-column: span 2;
+  }
+
+  /* ── WHAT I OFFER ── */
+  .offer-section { background: var(--black); }
+
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .offer-card {
+    border: 1px solid var(--gray3);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .offer-card:hover { border-color: var(--red); }
+
+  .offer-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .offer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .offer-desc {
+    font-size: 13px;
+    color: rgba(244,239,230,0.55);
+    line-height: 1.7;
+  }
+
+  .offer-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--red);
+    transition: width 0.4s ease;
+  }
+
+  .offer-card:hover::after { width: 100%; }
+
+  /* ── EXPERIENCE ── */
+  .exp-section { background: var(--gray); }
+
+  .exp-block {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: start;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--gray3);
+  }
+
+  .exp-block:first-child { border-top: 1px solid var(--gray3); }
+
+  .exp-meta { }
+
+  .exp-period {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .exp-company {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .exp-type {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  .exp-details { }
+
+  .exp-role {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .exp-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .exp-list li {
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .exp-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-size: 12px;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--red);
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 40px,
+      rgba(0,0,0,0.04) 40px, rgba(0,0,0,0.04) 41px
+    );
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 7vw, 100px);
+    line-height: 0.9;
+    color: var(--black);
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-title em {
+    font-style: normal;
+    -webkit-text-stroke: 2px var(--black);
+    color: transparent;
+  }
+
+  .cta-right {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-desc {
+    font-size: 15px;
+    color: rgba(0,0,0,0.65);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  .cta-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .cta-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--black);
+    text-decoration: none;
+    padding: 14px 20px;
+    background: rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.15);
+    transition: background 0.3s;
+  }
+
+  .cta-contact-item:hover { background: rgba(0,0,0,0.2); }
+
+  .cta-contact-item .icon { font-size: 16px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 30px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--gray2);
+  }
+
+  .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(244,239,230,0.3);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left {
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      padding: 60px 30px 80px;
+      min-height: 55vh;
+    }
+    .hero-right { padding: 50px 30px; }
+    section { padding: 60px 24px; }
+    .work-grid { grid-template-columns: 1fr; }
+    .work-card.wide { grid-column: span 1; }
+    .offer-grid { grid-template-columns: 1fr; }
+    .exp-block { grid-template-columns: 1fr; gap: 20px; }
+    .cta-section { grid-template-columns: 1fr; padding: 60px 24px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+    .stats-bar { padding: 24px; gap: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <div class="available-tag">
+      <span class="dot"></span>
+      Available for Work
+    </div>
+    <h1 class="hero-name">
+      SHI<br>
+      <span class="outline">VAM</span>
+    </h1>
+    <p class="hero-role">Script Writer &nbsp;·&nbsp; Video Shooter &nbsp;·&nbsp; Social Media</p>
+  </div>
+
+  <div class="hero-right">
+    <p class="intro-label">Who I Am</p>
+    <p class="intro-text">
+      I'm a <strong>content creator</strong> with 1 year of hands-on experience working on <strong>YouTube channels</strong> and <strong>social media</strong>. I've written scripts, shot videos, and managed online presence — all in the fast-moving world of <strong>social media affairs & business content.</strong>
+    </p>
+    <div class="skill-pills">
+      <div class="pill">Script Writing</div>
+      <div class="pill">Video Shooting</div>
+      <div class="pill">Social Media</div>
+      <div class="pill">YouTube Content</div>
+      <div class="pill">Business Videos</div>
+      <div class="pill">Storytelling</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Script Writing <span>✦</span></span>
+    <span class="ticker-item">Video Shooting <span>✦</span></span>
+    <span class="ticker-item">Social Media Management <span>✦</span></span>
+    <span class="ticker-item">YouTube Content <span>✦</span></span>
+    <span class="ticker-item">Business Videos <span>✦</span></span>
+    <span class="ticker-item">Content Strategy <span>✦</span></span>
+    <!-- repeat for seamless loop -->
+    <span class="ticker-item">Script Writing <span>✦</span></span>
+    <span class="ticker-item">Video Shooting <span>✦</span></span>
+    <span class="ticker-item">Social Media Management <span>✦</span></span>
+    <span class="ticker-item">YouTube Content <span>✦</span></span>
+    <span class="ticker-item">Business Videos <span>✦</span></span>
+    <span class="ticker-item">Content Strategy <span>✦</span></span>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">1+</div>
+    <div class="stat-label">Year Experience</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat">
+    <div class="stat-num">5+</div>
+    <div class="stat-label">Videos Scripted</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Core Skills</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Ideas Per Day</div>
+  </div>
+</div>
+
+<!-- WORK -->
+<section class="work-section">
+  <p class="section-eyebrow">My Work</p>
+  <h2 class="section-title">PROJECTS<br>I WORKED ON</h2>
+
+  <div class="work-grid">
+
+    <a class="work-card wide fade-up" href="https://youtu.be/WOIuc33yiZ4" target="_blank">
+      <span class="card-num">01</span>
+      <div class="card-badges">
+        <span class="cbadge red">Script</span>
+        <span class="cbadge red">Shoot</span>
+        <span class="cbadge">YouTube</span>
+        <span class="cbadge">Social Media</span>
+      </div>
+      <div class="card-title">Bunny Boss — Social Media Video</div>
+      <div class="card-desc">
+        Wrote the complete script and handled video shooting for this YouTube video on Bunny Boss's channel. Content focused on social media affairs and audience engagement.
+      </div>
+      <span class="card-link">youtu.be/WOIuc33yiZ4</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="work-card fade-up" href="https://youtu.be/DXzEBVhK0_Y" target="_blank">
+      <span class="card-num">02</span>
+      <div class="card-badges">
+        <span class="cbadge red">Script</span>
+        <span class="cbadge red">Shoot</span>
+        <span class="cbadge">YouTube</span>
+      </div>
+      <div class="card-title">Bunny Boss — Business Content</div>
+      <div class="card-desc">
+        Scripted and shot this business-focused video for the Bunny Boss YouTube channel. Handled full pre-production scripting and on-ground shooting.
+      </div>
+      <span class="card-link">youtu.be/DXzEBVhK0_Y</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="work-card fade-up" href="https://youtu.be/Rf4NOABe5FM" target="_blank">
+      <span class="card-num">03</span>
+      <div class="card-badges">
+        <span class="cbadge red">Shoot</span>
+        <span class="cbadge">YouTube</span>
+        <span class="cbadge">Business</span>
+      </div>
+      <div class="card-title">Bunny Boss — Shoot Only</div>
+      <div class="card-desc">
+        Handled complete video shooting and on-site production for this YouTube upload. Ensured quality visuals and smooth footage for the final edit.
+      </div>
+      <span class="card-link">youtu.be/Rf4NOABe5FM</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="work-card fade-up" href="https://youtu.be/0KotlY75Byo" target="_blank">
+      <span class="card-num">04</span>
+      <div class="card-badges">
+        <span class="cbadge red">Shoot</span>
+        <span class="cbadge">YouTube</span>
+        <span class="cbadge">Social Media</span>
+      </div>
+      <div class="card-title">Bunny Boss — Video Production</div>
+      <div class="card-desc">
+        Shot and produced this video for Bunny Boss's YouTube channel. Involved in full on-ground execution from setup to final footage delivery.
+      </div>
+      <span class="card-link">youtu.be/0KotlY75Byo</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="work-card fade-up" href="https://youtu.be/WOIuc33yiZ4" target="_blank">
+      <span class="card-num">05</span>
+      <div class="card-badges">
+        <span class="cbadge red">Script</span>
+        <span class="cbadge">YouTube</span>
+        <span class="cbadge">Social Media</span>
+      </div>
+      <div class="card-title">Bunny Boss — Script Only</div>
+      <div class="card-desc">
+        Wrote the complete script for this video. Crafted engaging narrative flow, talking points, and hook to maximize viewer retention and engagement.
+      </div>
+      <span class="card-link">youtu.be/WOIuc33yiZ4</span>
+      <span class="arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- WHAT I OFFER -->
+<section class="offer-section">
+  <p class="section-eyebrow">Services</p>
+  <h2 class="section-title">WHAT I<br>BRING TO<br>THE TABLE</h2>
+
+  <div class="offer-grid">
+    <div class="offer-card fade-up">
+      <span class="offer-icon">✍️</span>
+      <div class="offer-title">Script Writing</div>
+      <p class="offer-desc">
+        Engaging, well-structured scripts for YouTube videos and social media content. From hooks to CTAs — I write scripts that keep viewers watching till the end.
+      </p>
+    </div>
+    <div class="offer-card fade-up">
+      <span class="offer-icon">🎥</span>
+      <div class="offer-title">Video Shooting</div>
+      <p class="offer-desc">
+        On-ground video production — camera setup, framing, direction, and execution. I capture clean, purposeful footage ready for editing.
+      </p>
+    </div>
+    <div class="offer-card fade-up">
+      <span class="offer-icon">📱</span>
+      <div class="offer-title">Social Media Management</div>
+      <p class="offer-desc">
+        Managing social media presence, planning content calendars, posting schedules, and audience engagement for YouTube and other platforms.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp-section">
+  <p class="section-eyebrow">Experience</p>
+  <h2 class="section-title">WHERE I'VE<br>WORKED</h2>
+
+  <div class="exp-block fade-up">
+    <div class="exp-meta">
+      <p class="exp-period">2023 — 2024</p>
+      <h3 class="exp-company">BUNNY BOSS</h3>
+      <p class="ex
